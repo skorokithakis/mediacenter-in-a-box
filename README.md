@@ -1,6 +1,23 @@
 Mediacenter-in-a-box
 ====================
 
+EDIT: This README is slightly out of date, as I've added more stuff. I aim to update it
+at some point.
+
+To get this running with Harbormaster, all you need is the following configuration:
+
+```yaml
+apps:
+  mediacenterbox:
+    url: https://github.com/skorokithakis/mediacenter-in-a-box.git
+    environment:
+      JELLYFIN_PublishedServerUrl: https://<your jellyfin URL>
+    replacements:
+      MEDIA_DIR: /your/media/dir
+```
+
+---
+
 The idea here is that there's a single Compose file with stuff. The stuff comprises the
 following:
 
