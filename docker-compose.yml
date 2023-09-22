@@ -74,3 +74,15 @@ services:
       - {{ HM_MEDIA_DIR }}:/media
     ports:
       - 59982:7878
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:4.0.3
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - {{ HM_DATA_DIR }}/sabnzbd:/config
+      - {{ HM_MEDIA_DIR }}:/downloads
+    ports:
+      - 40184:8080
