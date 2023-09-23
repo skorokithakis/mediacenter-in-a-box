@@ -3,7 +3,7 @@ services:
     image: jellyfin/jellyfin:20230915.12-unstable
     user: 1000:1000
     ports:
-      - "53539:8096"
+      - "127.0.0.1:53539:8096"
     volumes:
       - {{ HM_DATA_DIR }}/jellyfin/config:/config
       - {{ HM_CACHE_DIR }}/jellyfin/cache:/cache
@@ -22,9 +22,9 @@ services:
       - {{ HM_DATA_DIR }}/qbittorrent:/config
       - {{ HM_MEDIA_DIR }}:/downloads
     ports:
-      - 35944:8080
-      - 35945:6881
-      - 35945:6881/udp
+      - "127.0.0.1:35944:8080"
+      - "127.0.0.1:35945:6688"
+      - "127.0.0.1:35945:6881/udp"
     restart: 'unless-stopped'
   ombi:
     image: lscr.io/linuxserver/ombi:4.43.5
@@ -36,7 +36,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/ombi:/config
     ports:
-      - 55542:3579
+      - "127.0.0.1:55542:3579"
     extra_hosts:
       - host.docker.internal:host-gateway
   sonarr:
@@ -50,7 +50,7 @@ services:
       - {{ HM_DATA_DIR }}/sonarr:/config
       - {{ HM_MEDIA_DIR }}:/media
     ports:
-      - 10087:8989
+      - "127.0.0.1:10087:8989"
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     restart: unless-stopped
@@ -61,7 +61,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/prowlarr:/config
     ports:
-      - 57045:9696
+      - "127.0.0.1:57045:9696"
   radarr:
     image: lscr.io/linuxserver/radarr:4.7.5
     restart: unless-stopped
@@ -73,7 +73,7 @@ services:
       - {{ HM_DATA_DIR }}/radarr:/config
       - {{ HM_MEDIA_DIR }}:/media
     ports:
-      - 59982:7878
+      - "127.0.0.1:59982:7878"
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:4.0.3
     restart: unless-stopped
@@ -85,4 +85,4 @@ services:
       - {{ HM_DATA_DIR }}/sabnzbd:/config
       - {{ HM_MEDIA_DIR }}:/downloads
     ports:
-      - 40184:8080
+      - "127.0.0.1:40184:8080"
