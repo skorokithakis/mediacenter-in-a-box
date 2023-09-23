@@ -1,8 +1,18 @@
 Mediacenter-in-a-box
 ====================
 
-EDIT: This README is slightly out of date, as I've added more stuff. I aim to update it
-at some point.
+The Mediacenter-in-a-box is a single, Harbormaster-compatible deployment that includes
+all the applications you need to set up a media center server.
+
+It includes:
+
+* Jellyfin (to play your media)
+* Ombi (so you can request media)
+* Sonarr (to manage your shows)
+* Radarr (to manage your movies)
+* Prowlarr (to manage your trackers)
+* SABnzbd (to download from Usenet)
+* qBittorrent (to download with BitTorrent)
 
 To get this running with Harbormaster, all you need is the following configuration:
 
@@ -16,10 +26,24 @@ apps:
       MEDIA_DIR: /your/media/dir
 ```
 
+You'll then need your own ingress server to get TLS and nice-looking hostnames (Caddy is
+recommended because of its simplicity).
+The ports you'll need to forward are:
+
+* Jellyfin: 53539
+* Ombi: 55542
+* Sonarr: 10087
+* Radarr: 59982
+* Prowlarr: 57045
+* SABnzbd 40184
+* qBittorrent: 35944
+
+That should be it for the initial setup! You can access your apps on the hostnames you
+selected, and start configuring.
+
 ---
 
-The idea here is that there's a single Compose file with stuff. The stuff comprises the
-following:
+THE BELOW IS SLIGHTLY OUT OF DATE.
 
 ## Two mountpoints
 
@@ -27,6 +51,7 @@ There are two mountpoints here:
 
 * The `downloads` mountpoint, where downloads are placed.
 * The `media` mountpoint, where all the media is.
+
 
 ## Three steps
 
@@ -45,6 +70,7 @@ should put in the `filebot` Harbormaster data directory. Your script can delete 
 files in the source when done.
 
 Finally, the files are scanned and displayed by Jellyfin.
+
 
 ## Considerations
 
