@@ -10,6 +10,7 @@ It includes:
 * Ombi (so you can request media)
 * Sonarr (to manage your shows)
 * Radarr (to manage your movies)
+* Bazarr (to download subtitles)
 * Prowlarr (to manage your trackers)
 * SABnzbd (to download from Usenet)
 * qBittorrent (to download with BitTorrent)
@@ -34,6 +35,7 @@ The ports you'll need to forward are:
 * Ombi: 55542
 * Sonarr: 10087
 * Radarr: 59982
+* Bazarr: 10044
 * Prowlarr: 57045
 * SABnzbd 40184
 * qBittorrent: 35944
