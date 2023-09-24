@@ -95,6 +95,6 @@ services:
       - TZ=Etc/UTC
     volumes:
       - {{ HM_DATA_DIR }}/bazarr:/config
-      - {{ HM_MEDIA_DIR }}:/downloads
+      - {{ HM_MEDIA_DIR }}:/media
     ports:
       - 10044:6767
