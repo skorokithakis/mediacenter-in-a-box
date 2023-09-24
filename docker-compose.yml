@@ -86,3 +86,15 @@ services:
       - {{ HM_MEDIA_DIR }}:/downloads
     ports:
       - "127.0.0.1:40184:8080"
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:1.3.0
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - {{ HM_DATA_DIR }}/bazarr:/config
+      - {{ HM_MEDIA_DIR }}:/downloads
+    ports:
+      - 10044:6767
