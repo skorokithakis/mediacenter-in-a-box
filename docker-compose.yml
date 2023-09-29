@@ -97,4 +97,4 @@ services:
       - {{ HM_DATA_DIR }}/bazarr:/config
       - {{ HM_MEDIA_DIR }}:/media
     ports:
-      - 10044:6767
+      - "127.0.0.1:10044:6767"
