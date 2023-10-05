@@ -98,3 +98,9 @@ services:
       - {{ HM_MEDIA_DIR }}:/media
     ports:
       - "127.0.0.1:10044:6767"
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr:6.0.1
+    volumes:
+      - {{ HM_DATA_DIR }}/recyclarr:/config
+    environment:
+      - TZ=Etc/UTC

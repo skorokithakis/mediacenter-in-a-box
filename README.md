@@ -12,6 +12,7 @@ It includes:
 * Radarr (to manage your movies)
 * Bazarr (to download subtitles)
 * Prowlarr (to manage your trackers)
+* Recyclarr (to add recommended settings to your *arrs)
 * SABnzbd (to download from Usenet)
 * qBittorrent (to download with BitTorrent)
 
