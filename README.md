@@ -8,6 +8,7 @@ It includes:
 
 * Jellyfin (to play your media)
 * Ombi (so you can request media)
+* Overseerr (so you can request media again)
 * Sonarr (to manage your shows)
 * Radarr (to manage your movies)
 * Bazarr (to download subtitles)
@@ -34,6 +35,7 @@ The ports you'll need to forward are:
 
 * Jellyfin: 53539
 * Ombi: 55542
+* Overseerr: 36882
 * Sonarr: 10087
 * Radarr: 59982
 * Bazarr: 10044

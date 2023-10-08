@@ -104,3 +104,12 @@ services:
       - {{ HM_DATA_DIR }}/recyclarr:/config
     environment:
       - TZ=Etc/UTC
+  overseerr:
+    image: sctx/overseerr:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Etc/UTC
+    ports:
+      - "127.0.0.1:36882:5055"
+    volumes:
+      - {{ HM_DATA_DIR }}/overseerr:/config
