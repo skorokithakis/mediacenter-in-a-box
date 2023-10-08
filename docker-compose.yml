@@ -112,4 +112,4 @@ services:
     ports:
       - "127.0.0.1:36882:5055"
     volumes:
-      - {{ HM_DATA_DIR }}/overseerr:/config
+      - {{ HM_DATA_DIR }}/overseerr:/app/config
