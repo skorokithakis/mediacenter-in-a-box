@@ -7,6 +7,7 @@ all the applications you need to set up a media center server.
 It includes:
 
 * Jellyfin (to play your media)
+* Plex (to play your media more)
 * Ombi (so you can request media)
 * Overseerr (so you can request media again)
 * Sonarr (to manage your shows)
@@ -14,6 +15,7 @@ It includes:
 * Bazarr (to download subtitles)
 * Prowlarr (to manage your trackers)
 * Recyclarr (to add recommended settings to your *arrs)
+* Tautulli (for Plex stats)
 * SABnzbd (to download from Usenet)
 * qBittorrent (to download with BitTorrent)
 
@@ -25,6 +27,8 @@ apps:
     url: https://github.com/skorokithakis/mediacenter-in-a-box.git
     environment:
       JELLYFIN_PublishedServerUrl: https://<your jellyfin URL>
+      ADVERTISE_IP: https://your.plex.ip.com
+      PLEX_CLAIM: your-claim-code
     replacements:
       MEDIA_DIR: /your/media/dir
 ```
@@ -34,13 +38,15 @@ recommended because of its simplicity).
 The ports you'll need to forward are:
 
 * Jellyfin: 53539
+* Plex: 32400
 * Ombi: 55542
 * Overseerr: 36882
 * Sonarr: 10087
 * Radarr: 59982
 * Bazarr: 10044
 * Prowlarr: 57045
-* SABnzbd 40184
+* Tautulli: 44011
+* SABnzbd: 40184
 * qBittorrent: 35944
 
 That should be it for the initial setup! You can access your apps on the hostnames you
