@@ -117,15 +117,7 @@ services:
     image: plexinc/pms-docker:1.32.6.7557-1cf77d501
     restart: unless-stopped
     ports:
-      - 32400:32400/tcp
-      - 3005:3005/tcp
-      - 8324:8324/tcp
-      - 32469:32469/tcp
-      - 1900:1900/udp
-      - 32410:32410/udp
-      - 32412:32412/udp
-      - 32413:32413/udp
-      - 32414:32414/udp
+      - "127.0.0.1:32400:32400/tcp"
     environment:
       - TZ=Etc/UTC
       - PLEX_CLAIM
@@ -135,3 +127,14 @@ services:
       - {{ HM_CACHE_DIR }}/plex/transcode:/transcode
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
+  tautulli:
+    image: ghcr.io/tautulli/tautulli:v2.13.1
+    restart: unless-stopped
+    volumes:
+      - {{ HM_DATA_DIR }}/tautulli:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    ports:
+      - "127.0.0.1:44011:8181"
