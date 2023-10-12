@@ -29,6 +29,9 @@ services:
   ombi:
     image: lscr.io/linuxserver/ombi:4.43.5
     restart: unless-stopped
+    profiles:
+      # Disable Ombi for now.
+      - donotstart
     environment:
       - PUID=1000
       - PGID=1000
