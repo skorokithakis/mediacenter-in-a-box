@@ -125,6 +125,9 @@ services:
       - TZ=Etc/UTC
       - PLEX_CLAIM
       - ADVERTISE_IP
+      - HTTP_PROXY
+      - HTTPS_PROXY
+      - NO_PROXY
     volumes:
       - {{ HM_DATA_DIR }}/plex:/config
       - {{ HM_CACHE_DIR }}/plex/transcode:/transcode
