@@ -43,7 +43,7 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest
+    image: lscr.io/linuxserver/sonarr:3.0.10
     restart: unless-stopped
     environment:
       - PUID=1000
