@@ -117,7 +117,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/overseerr:/app/config
   plex:
-    image: plexinc/pms-docker:1.32.6.7557-1cf77d501
+    image: plexinc/pms-docker:1.32.7.7621-871adbd44
     restart: unless-stopped
     ports:
       - "127.0.0.1:32400:32400/tcp"
