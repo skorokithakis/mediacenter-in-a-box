@@ -12,7 +12,7 @@ services:
     environment:
       - JELLYFIN_PublishedServerUrl
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:4.5.5
+    image: lscr.io/linuxserver/qbittorrent:4.6.2
     environment:
       - PUID=1000
       - PGID=1000
@@ -26,24 +26,8 @@ services:
       - "127.0.0.1:35945:6688"
       - "127.0.0.1:35945:6881/udp"
     restart: 'unless-stopped'
-  ombi:
-    image: lscr.io/linuxserver/ombi:4.43.5
-    restart: unless-stopped
-    profiles:
-      # Disable Ombi for now.
-      - donotstart
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-    volumes:
-      - {{ HM_DATA_DIR }}/ombi:/config
-    ports:
-      - "127.0.0.1:55542:3579"
-    extra_hosts:
-      - host.docker.internal:host-gateway
   sonarr:
-    image: lscr.io/linuxserver/sonarr:3.0.10
+    image: lscr.io/linuxserver/sonarr:4.0.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -55,7 +39,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest
+    image: lscr.io/linuxserver/prowlarr:1.11.4
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -66,7 +50,7 @@ services:
     ports:
       - "127.0.0.1:57045:9696"
   radarr:
-    image: lscr.io/linuxserver/radarr:5.1.3
+    image: lscr.io/linuxserver/radarr:5.2.6
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -78,7 +62,7 @@ services:
     ports:
       - "127.0.0.1:59982:7878"
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:4.1.0
+    image: lscr.io/linuxserver/sabnzbd:4.2.1
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -90,7 +74,7 @@ services:
     ports:
       - "127.0.0.1:40184:8080"
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.3.0
+    image: lscr.io/linuxserver/bazarr:1.4.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -102,7 +86,7 @@ services:
     ports:
       - "127.0.0.1:10044:6767"
   recyclarr:
-    image: ghcr.io/recyclarr/recyclarr:6.0.1
+    image: ghcr.io/recyclarr/recyclarr:6.0.2
     volumes:
       - {{ HM_DATA_DIR }}/recyclarr:/config
     environment:
@@ -134,7 +118,7 @@ services:
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
   tautulli:
-    image: ghcr.io/tautulli/tautulli:v2.13.2
+    image: ghcr.io/tautulli/tautulli:v2.13.4
     restart: unless-stopped
     volumes:
       - {{ HM_DATA_DIR }}/tautulli:/config
