@@ -62,7 +62,7 @@ services:
     ports:
       - "127.0.0.1:59982:7878"
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:4.2.1
+    image: lscr.io/linuxserver/sabnzbd:4.2.2
     restart: unless-stopped
     environment:
       - PUID=1000
