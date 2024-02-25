@@ -39,7 +39,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:1.11.4
+    image: lscr.io/linuxserver/prowlarr:1.13.3.4273-ls53
     restart: unless-stopped
     environment:
       - PUID=1000
