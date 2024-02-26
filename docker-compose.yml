@@ -92,14 +92,16 @@ services:
     environment:
       - TZ=Etc/UTC
   overseerr:
-    image: sctx/overseerr:latest
+    image: lscr.io/linuxserver/overseerr:1.33.2
     restart: unless-stopped
     environment:
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
     ports:
       - "127.0.0.1:36882:5055"
     volumes:
-      - {{ HM_DATA_DIR }}/overseerr:/app/config
+      - {{ HM_DATA_DIR }}/overseerr:/config
   plex:
     image: plexinc/pms-docker:1.32.7.7621-871adbd44
     restart: unless-stopped
