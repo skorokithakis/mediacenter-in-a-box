@@ -74,7 +74,7 @@ services:
     ports:
       - "127.0.0.1:40184:8080"
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.4.0
+    image: lscr.io/linuxserver/bazarr:1.4.2
     restart: unless-stopped
     environment:
       - PUID=1000
