@@ -120,7 +120,7 @@ services:
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
   tautulli:
-    image: ghcr.io/tautulli/tautulli:v2.13.4
+    image: lscr.io/linuxserver/tautulli:2.14.3
     restart: unless-stopped
     volumes:
       - {{ HM_DATA_DIR }}/tautulli:/config
