@@ -1,7 +1,6 @@
 services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:10.9.9
-    user: 1000:1000
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
@@ -11,6 +10,9 @@ services:
     restart: 'unless-stopped'
     environment:
       - JELLYFIN_PublishedServerUrl
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:4.6.5
     environment:
