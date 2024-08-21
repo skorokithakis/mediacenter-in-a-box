@@ -4,7 +4,7 @@ services:
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
-      - {{ HM_DATA_DIR }}/jellyfin/config:/config
+      - {{ HM_DATA_DIR }}/jellyfin/config/config:/config
       - {{ HM_CACHE_DIR }}/jellyfin/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data/:ro
     restart: 'unless-stopped'
