@@ -7,7 +7,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/jellyfin/config:/config
       - {{ HM_CACHE_DIR }}/jellyfin/cache:/cache
-      - {{ HM_MEDIA_DIR }}:/media/:ro
+      - {{ HM_MEDIA_DIR }}:/data/:ro
     restart: 'unless-stopped'
     environment:
       - JELLYFIN_PublishedServerUrl
