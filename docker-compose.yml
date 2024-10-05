@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.9.9
+    image: lscr.io/linuxserver/jellyfin:10.9.11
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
@@ -14,7 +14,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:4.6.5
+    image: lscr.io/linuxserver/qbittorrent:5.0.0
     environment:
       - PUID=1000
       - PGID=1000
@@ -29,7 +29,7 @@ services:
       - "127.0.0.1:35945:6881/udp"
     restart: 'unless-stopped'
   sonarr:
-    image: lscr.io/linuxserver/sonarr:4.0.8
+    image: lscr.io/linuxserver/sonarr:4.0.9
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -41,7 +41,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:1.21.2
+    image: lscr.io/linuxserver/prowlarr:1.24.3
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -52,7 +52,7 @@ services:
     ports:
       - "127.0.0.1:57045:9696"
   radarr:
-    image: lscr.io/linuxserver/radarr:5.8.3
+    image: lscr.io/linuxserver/radarr:5.11.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -64,7 +64,7 @@ services:
     ports:
       - "127.0.0.1:59982:7878"
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:4.3.2
+    image: lscr.io/linuxserver/sabnzbd:4.3.3
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -76,7 +76,7 @@ services:
     ports:
       - "127.0.0.1:40184:8080"
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.4.3
+    image: lscr.io/linuxserver/bazarr:1.4.5
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -122,7 +122,7 @@ services:
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
   tautulli:
-    image: lscr.io/linuxserver/tautulli:2.14.3
+    image: lscr.io/linuxserver/tautulli:2.14.5
     restart: unless-stopped
     volumes:
       - {{ HM_DATA_DIR }}/tautulli:/config
