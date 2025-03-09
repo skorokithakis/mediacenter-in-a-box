@@ -31,14 +31,16 @@ def get_latest_version(repo: str) -> Optional[str]:
             return None
 
         # Collect version tags from this page
+        exclusions = ["alpha", "beta", "rc", "nightly", "unstable"]
+        if repo != "readarr":
+            # Readarr's stable version is called -develop, as far as I can tell.
+            exclusions.append("dev")
+
         page_tags = [
             (result["name"], result["tag_last_pushed"])
             for result in data["results"]
             if result["name"] != "latest"
-            and not any(
-                x in result["name"]
-                for x in ["dev", "alpha", "beta", "rc", "nightly", "unstable"]
-            )
+            and not any(x in result["name"] for x in exclusions)
         ]
         version_tags.extend(page_tags)
 
@@ -65,9 +67,10 @@ programs = re.findall("lscr.io/linuxserver/(.*?):.*$", compose, re.MULTILINE)
 
 # Update each program's version
 for program in programs:
+    print(f"Fetching version for {program}...")
     version = get_latest_version(program)
     if version:
-        print(f"Updating {program} to version {version}")
+        print(f"Updated {program} to version {version}.")
         compose = re.sub(
             f"lscr.io/linuxserver/{program}:.*$",
             f"lscr.io/linuxserver/{program}:{version}",
@@ -75,7 +78,7 @@ for program in programs:
             flags=re.MULTILINE,
         )
     else:
-        print(f"Failed to find version for {program}")
+        print(f"Failed to find version for {program}.")
 
 with open("docker-compose.yml", "w") as outfile:
     outfile.write(compose)
