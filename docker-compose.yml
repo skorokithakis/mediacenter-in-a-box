@@ -74,7 +74,7 @@ services:
       - {{ HM_DATA_DIR }}/readarr:/config
       - {{ HM_MEDIA_DIR }}:/media
     ports:
-      - "127.0.0.1:59983:7878"
+      - "127.0.0.1:59983:8787"
     restart: unless-stopped
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:4.4.1
