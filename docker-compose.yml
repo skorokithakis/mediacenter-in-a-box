@@ -63,6 +63,19 @@ services:
       - {{ HM_MEDIA_DIR }}:/media
     ports:
       - "127.0.0.1:59982:7878"
+  readarr:
+    image: lscr.io/linuxserver/readarr:0.4.12-develop
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - {{ HM_DATA_DIR }}/readarr:/config
+      - {{ HM_MEDIA_DIR }}:/media
+    ports:
+      - "127.0.0.1:59983:7878"
+    restart: unless-stopped
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:4.4.1
     restart: unless-stopped
