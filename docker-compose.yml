@@ -29,7 +29,7 @@ services:
       - "127.0.0.1:35945:6881/udp"
     restart: 'unless-stopped'
   sonarr:
-    image: lscr.io/linuxserver/sonarr:4.0.13
+    image: lscr.io/linuxserver/sonarr:4.0.14
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -41,7 +41,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:1.31.2
+    image: lscr.io/linuxserver/prowlarr:1.32.2
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -52,7 +52,7 @@ services:
     ports:
       - "127.0.0.1:57045:9696"
   radarr:
-    image: lscr.io/linuxserver/radarr:5.19.3
+    image: lscr.io/linuxserver/radarr:5.21.1
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -107,7 +107,7 @@ services:
     environment:
       - TZ=Etc/UTC
   overseerr:
-    image: lscr.io/linuxserver/overseerr:1.33.2
+    image: lscr.io/linuxserver/overseerr:1.34.0
     restart: unless-stopped
     environment:
       - PUID=1000
