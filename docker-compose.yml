@@ -41,7 +41,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:1.37.0
+    image: lscr.io/linuxserver/prowlarr:2.0.5
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -52,7 +52,7 @@ services:
     ports:
       - "127.0.0.1:57045:9696"
   radarr:
-    image: lscr.io/linuxserver/radarr:5.26.2
+    image: lscr.io/linuxserver/radarr:5.27.5
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -77,7 +77,7 @@ services:
       - "127.0.0.1:59983:8787"
     restart: unless-stopped
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:4.5.2
+    image: lscr.io/linuxserver/sabnzbd:4.5.3
     restart: unless-stopped
     environment:
       - PUID=1000
