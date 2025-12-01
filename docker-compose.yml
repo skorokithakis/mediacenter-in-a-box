@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.2
+    image: lscr.io/linuxserver/jellyfin:10.11.3
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
@@ -14,7 +14,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:5.1.2
+    image: lscr.io/linuxserver/qbittorrent:5.1.4
     environment:
       - PUID=1000
       - PGID=1000
@@ -41,7 +41,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:2.1.5
+    image: lscr.io/linuxserver/prowlarr:2.3.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -52,7 +52,7 @@ services:
     ports:
       - "127.0.0.1:57045:9696"
   radarr:
-    image: lscr.io/linuxserver/radarr:5.28.0
+    image: lscr.io/linuxserver/radarr:6.0.4
     restart: unless-stopped
     environment:
       - PUID=1000
