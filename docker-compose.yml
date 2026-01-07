@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.3
+    image: lscr.io/linuxserver/jellyfin:10.11.5
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
@@ -89,7 +89,7 @@ services:
     ports:
       - "127.0.0.1:40184:8080"
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.5.3
+    image: lscr.io/linuxserver/bazarr:1.5.4
     restart: unless-stopped
     environment:
       - PUID=1000
