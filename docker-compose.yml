@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.5
+    image: lscr.io/linuxserver/jellyfin:10.11.6
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
