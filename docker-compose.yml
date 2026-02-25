@@ -101,7 +101,7 @@ services:
     ports:
       - "127.0.0.1:10044:6767"
   recyclarr:
-    image: ghcr.io/recyclarr/recyclarr:6.0.2
+    image: ghcr.io/recyclarr/recyclarr:8.3.1
     volumes:
       - {{ HM_DATA_DIR }}/recyclarr:/config
     environment:
@@ -137,7 +137,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/overseerr:/config
   plex:
-    image: plexinc/pms-docker:1.41.5.9522-a96edc606
+    image: plexinc/pms-docker:1.43.0.10492-121068a07
     restart: unless-stopped
     ports:
       - "127.0.0.1:32400:32400/tcp"
