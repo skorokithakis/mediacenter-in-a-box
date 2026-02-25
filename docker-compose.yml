@@ -89,7 +89,7 @@ services:
     ports:
       - "127.0.0.1:40184:8080"
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.5.4
+    image: lscr.io/linuxserver/bazarr:1.5.5
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -106,13 +106,14 @@ services:
       - {{ HM_DATA_DIR }}/recyclarr:/config
     environment:
       - TZ=Etc/UTC
-  jellyseerr:
-    image: ghcr.io/fallenbagel/jellyseerr:latest
+  seerr:
+    image: ghcr.io/seerr-team/seerr:v3.0.1
     init: true
+    container_name: seerr
     environment:
       - LOG_LEVEL=debug
       - TZ=Etc/UTC
-      - PORT=5055 #optional
+      - PORT=5055
     ports:
       - "127.0.0.1:37809:5055"
     volumes:
@@ -125,7 +126,7 @@ services:
       retries: 3
     restart: unless-stopped
   overseerr:
-    image: lscr.io/linuxserver/overseerr:1.34.0
+    image: lscr.io/linuxserver/overseerr:1.35.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -153,7 +154,7 @@ services:
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
   tautulli:
-    image: lscr.io/linuxserver/tautulli:2.16.0
+    image: lscr.io/linuxserver/tautulli:2.16.1
     restart: unless-stopped
     volumes:
       - {{ HM_DATA_DIR }}/tautulli:/config
