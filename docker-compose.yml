@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.6
+    image: lscr.io/linuxserver/jellyfin:10.11.8
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
@@ -41,7 +41,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:2.3.0
+    image: lscr.io/linuxserver/prowlarr:2.3.5
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -52,7 +52,7 @@ services:
     ports:
       - "127.0.0.1:57045:9696"
   radarr:
-    image: lscr.io/linuxserver/radarr:6.0.4
+    image: lscr.io/linuxserver/radarr:6.1.1
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -106,7 +106,7 @@ services:
     environment:
       - TZ=Etc/UTC
   seerr:
-    image: ghcr.io/seerr-team/seerr:v3.1.0
+    image: ghcr.io/seerr-team/seerr:v3.2.0
     init: true
     environment:
       - LOG_LEVEL=debug
@@ -135,7 +135,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/overseerr:/config
   plex:
-    image: plexinc/pms-docker:1.43.0.10492-121068a07
+    image: plexinc/pms-docker:1.43.1.10611-1e34174b1
     restart: unless-stopped
     ports:
       - "127.0.0.1:32400:32400/tcp"
@@ -152,7 +152,7 @@ services:
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
   tautulli:
-    image: lscr.io/linuxserver/tautulli:2.16.1
+    image: lscr.io/linuxserver/tautulli:2.17.0
     restart: unless-stopped
     volumes:
       - {{ HM_DATA_DIR }}/tautulli:/config
