@@ -14,7 +14,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:5.2.1
+    image: lscr.io/linuxserver/qbittorrent:5.2.3
     environment:
       - PUID=1000
       - PGID=1000
@@ -29,7 +29,7 @@ services:
       - "127.0.0.1:35945:6881/udp"
     restart: 'unless-stopped'
   sonarr:
-    image: lscr.io/linuxserver/sonarr:4.0.17
+    image: lscr.io/linuxserver/sonarr:4.0.19
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -52,7 +52,7 @@ services:
     ports:
       - "127.0.0.1:57045:9696"
   radarr:
-    image: lscr.io/linuxserver/radarr:6.2.1
+    image: lscr.io/linuxserver/radarr:6.3.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -76,7 +76,7 @@ services:
       - "127.0.0.1:59983:8787"
     restart: unless-stopped
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:5.0.3
+    image: lscr.io/linuxserver/sabnzbd:5.0.4
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -88,7 +88,7 @@ services:
     ports:
       - "127.0.0.1:40184:8080"
   bazarr:
-    image: lscr.io/linuxserver/bazarr:1.5.6
+    image: lscr.io/linuxserver/bazarr:1.6.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -152,7 +152,7 @@ services:
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
   tautulli:
-    image: lscr.io/linuxserver/tautulli:2.17.1
+    image: lscr.io/linuxserver/tautulli:2.17.2
     restart: unless-stopped
     volumes:
       - {{ HM_DATA_DIR }}/tautulli:/config
