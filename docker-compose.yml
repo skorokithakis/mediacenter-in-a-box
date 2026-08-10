@@ -41,7 +41,7 @@ services:
     ports:
       - "127.0.0.1:10087:8989"
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:2.4.0
+    image: lscr.io/linuxserver/prowlarr:2.5.2
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -76,7 +76,7 @@ services:
       - "127.0.0.1:59983:8787"
     restart: unless-stopped
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:5.0.4
+    image: lscr.io/linuxserver/sabnzbd:5.1.0
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -100,13 +100,13 @@ services:
     ports:
       - "127.0.0.1:10044:6767"
   recyclarr:
-    image: ghcr.io/recyclarr/recyclarr:8.6.0
+    image: ghcr.io/recyclarr/recyclarr:8.7.1
     volumes:
       - {{ HM_DATA_DIR }}/recyclarr:/config
     environment:
       - TZ=Etc/UTC
   seerr:
-    image: ghcr.io/seerr-team/seerr:v3.3.0
+    image: ghcr.io/seerr-team/seerr:v3.4.1
     init: true
     environment:
       - LOG_LEVEL=debug
@@ -135,7 +135,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/overseerr:/config
   plex:
-    image: plexinc/pms-docker:1.43.2.10687-563d026ea
+    image: plexinc/pms-docker:1.43.3.10861-07dfddaeb
     restart: unless-stopped
     ports:
       - "127.0.0.1:32400:32400/tcp"
