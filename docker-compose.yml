@@ -19,10 +19,16 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      # Must equal the host side of the WebUI port mapping below. qBittorrent
-      # rejects any request whose Host header names a port other than the one
-      # it listens on, with a 401 that looks exactly like a wrong password.
-      - WEBUI_PORT=35944
+      # Stays at 8080 even though the host publishes 35944, against the
+      # linuxserver advice to match both sides. The *arrs reach this over the
+      # Compose network at qbittorrent:8080, so changing it breaks every one of
+      # them at once. The mismatch is harmless here because qBittorrent only
+      # checks the Host header's port when the header carries one, and the
+      # ingress server forwards the public hostname without a port.
+      # The cost is that http://127.0.0.1:35944 answers 401 from the host,
+      # because a direct request does send the port. Pass a matching
+      # "Host: localhost:8080" header if you need to reach it that way.
+      - WEBUI_PORT=8080
       # The host and container torrenting ports must be identical, because
       # qBittorrent announces the port it binds to and peers dial that number.
       # A host:container mismatch would advertise a port nobody can reach.
@@ -31,7 +37,7 @@ services:
       - {{ HM_DATA_DIR }}/qbittorrent:/config
       - {{ HM_MEDIA_DIR }}:/downloads
     ports:
-      - "127.0.0.1:35944:35944"
+      - "127.0.0.1:35944:8080"
       # Deliberately not bound to 127.0.0.1, unlike every other port here.
       # Peers dial in from the internet, so this cannot sit behind the ingress
       # proxy. Without it qBittorrent is passive and only makes outbound
