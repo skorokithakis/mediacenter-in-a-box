@@ -20,13 +20,21 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
       - WEBUI_PORT=8080
+      # The host and container torrenting ports must be identical, because
+      # qBittorrent announces the port it binds to and peers dial that number.
+      # A host:container mismatch would advertise a port nobody can reach.
+      - TORRENTING_PORT=35945
     volumes:
       - {{ HM_DATA_DIR }}/qbittorrent:/config
       - {{ HM_MEDIA_DIR }}:/downloads
     ports:
       - "127.0.0.1:35944:8080"
-      - "127.0.0.1:35945:6688"
-      - "127.0.0.1:35945:6881/udp"
+      # Deliberately not bound to 127.0.0.1, unlike every other port here.
+      # Peers dial in from the internet, so this cannot sit behind the ingress
+      # proxy. Without it qBittorrent is passive and only makes outbound
+      # connections. Forward this port at the router too, TCP and UDP.
+      - "35945:35945"
+      - "35945:35945/udp"
     restart: 'unless-stopped'
   sonarr:
     image: lscr.io/linuxserver/sonarr:4.0.19
@@ -162,3 +170,15 @@ services:
       - TZ=Etc/UTC
     ports:
       - "127.0.0.1:44011:8181"
+  maintainerr:
+    image: ghcr.io/maintainerr/maintainerr:3.27.0
+    restart: unless-stopped
+    environment:
+      - TZ=Etc/UTC
+    # Unlike the linuxserver images, this one runs as UID 1000 from the start
+    # and cannot chown its own data directory, so the directory has to already
+    # be owned by 1000:1000 or the container exits. See the README.
+    volumes:
+      - {{ HM_DATA_DIR }}/maintainerr:/opt/data
+    ports:
+      - "127.0.0.1:46311:6246"

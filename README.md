@@ -8,13 +8,15 @@ It includes:
 
 * Jellyfin (to play your media)
 * Plex (to play your media more)
-* Ombi (so you can request media)
-* Overseerr (so you can request media again)
+* Overseerr (so you can request media)
+* Seerr (so you can request media again)
 * Sonarr (to manage your shows)
 * Radarr (to manage your movies)
+* Readarr (to manage your books)
 * Bazarr (to download subtitles)
 * Prowlarr (to manage your trackers)
 * Recyclarr (to add recommended settings to your *arrs)
+* Maintainerr (to delete the media nobody watches any more)
 * Tautulli (for Plex stats)
 * SABnzbd (to download from Usenet)
 * qBittorrent (to download with BitTorrent)
@@ -39,15 +41,37 @@ The ports you'll need to forward are:
 
 * Jellyfin: 53539
 * Plex: 32400
-* Ombi: 55542
 * Overseerr: 36882
+* Seerr: 37809
 * Sonarr: 10087
 * Radarr: 59982
+* Readarr: 59983
 * Bazarr: 10044
 * Prowlarr: 57045
+* Maintainerr: 46311
 * Tautulli: 44011
 * SABnzbd: 40184
 * qBittorrent: 35944
+
+qBittorrent also needs port 35945, TCP and UDP, forwarded to the host for incoming peer
+connections. That one is different from all the others: it carries BitTorrent traffic
+rather than HTTP, so it cannot go through your ingress server, and the container
+publishes it on every interface instead of on localhost. Leave it closed if you would
+rather not accept incoming connections, and qBittorrent will still work, with fewer
+peers.
+
+Maintainerr needs one manual step before the first run. Unlike the other containers, it
+runs as UID 1000 and cannot fix the ownership of its own data directory, so it exits at
+startup if that directory belongs to root, which is what Docker creates it as. Create it
+yourself first, in your Harbormaster working directory:
+
+```bash
+mkdir -p data/<app_id>/maintainerr
+chown 1000:1000 data/<app_id>/maintainerr
+```
+
+`<app_id>` is the key you gave the app in `harbormaster.yml`, so `mediacenterbox` if you
+used the configuration above.
 
 That should be it for the initial setup! You can access your apps on the hostnames you
 selected, and start configuring.
