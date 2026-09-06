@@ -93,7 +93,7 @@ services:
       - "127.0.0.1:59983:8787"
     restart: unless-stopped
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:5.1.0
+    image: lscr.io/linuxserver/sabnzbd:5.1.2
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -117,7 +117,7 @@ services:
     ports:
       - "127.0.0.1:10044:6767"
   recyclarr:
-    image: ghcr.io/recyclarr/recyclarr:8.7.1
+    image: ghcr.io/recyclarr/recyclarr:8.7.2
     volumes:
       - {{ HM_DATA_DIR }}/recyclarr:/config
     environment:
@@ -152,7 +152,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/overseerr:/config
   plex:
-    image: plexinc/pms-docker:1.43.3.10861-07dfddaeb
+    image: plexinc/pms-docker:1.43.3.10896-cb3ebc72d
     restart: unless-stopped
     ports:
       - "127.0.0.1:32400:32400/tcp"
@@ -169,7 +169,7 @@ services:
       - {{ HM_CACHE_DIR }}/plex/cache:/cache
       - {{ HM_MEDIA_DIR }}:/data
   tautulli:
-    image: lscr.io/linuxserver/tautulli:2.17.2
+    image: lscr.io/linuxserver/tautulli:2.18.1
     restart: unless-stopped
     volumes:
       - {{ HM_DATA_DIR }}/tautulli:/config
