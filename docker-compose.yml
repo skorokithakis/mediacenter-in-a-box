@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:10.11.11
+    image: lscr.io/linuxserver/jellyfin:12.0ubu2604-ls48
     ports:
       - "127.0.0.1:53539:8096"
     volumes:
@@ -93,7 +93,7 @@ services:
       - "127.0.0.1:59983:8787"
     restart: unless-stopped
   sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:5.1.2
+    image: lscr.io/linuxserver/sabnzbd:5.1.3
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -152,7 +152,7 @@ services:
     volumes:
       - {{ HM_DATA_DIR }}/overseerr:/config
   plex:
-    image: plexinc/pms-docker:1.43.3.10896-cb3ebc72d
+    image: plexinc/pms-docker:1.43.4.10903-e5521bd8c
     restart: unless-stopped
     ports:
       - "127.0.0.1:32400:32400/tcp"
